@@ -4,5 +4,10 @@ namespace MCordingley\Breadcrumbs;
 
 interface Loader
 {
-    public function loadTrail(string $path, array $properties = []): Trail;
+    /**
+     * @param string $path
+     * @param array $properties
+     * @return Breadcrumb[]
+     */
+    public function load(string $path, array $properties = []): array;
 }

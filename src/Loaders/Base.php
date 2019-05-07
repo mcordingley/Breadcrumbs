@@ -4,11 +4,12 @@ namespace MCordingley\Breadcrumbs\Loaders;
 
 use MCordingley\Breadcrumbs\Breadcrumb;
 use MCordingley\Breadcrumbs\Loader;
-use MCordingley\Breadcrumbs\Trail;
 
 abstract class Base implements Loader
 {
-    final public function loadTrail(string $path, array $properties = []): Trail
+    use ResolvesProperties;
+
+    final public function load(string $path, array $properties = []): array
     {
         $trail = [];
 
@@ -21,19 +22,12 @@ abstract class Base implements Loader
             );
         } while ($path = $crumb['parent'] ?? null);
 
-        return new Trail(array_reverse($trail));
+        return array_reverse($trail);
     }
 
     /**
      * @param string $path
-     * @return array With keys "title", "url", and optionally "parent".
+     * @return array With key "title" and optionally "parent".
      */
     abstract protected function loadCrumb(string $path): array;
-
-    private function resolveProperties(string $subject, array $properties): string
-    {
-        return preg_replace_callback('/{(.*?)}/', function (array $matches) use ($properties): string {
-            return data_get($properties, $matches[1], '');
-        }, $subject);
-    }
 }
