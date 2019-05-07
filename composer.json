@@ -13,7 +13,9 @@
         }
     },
     "require": {
+        "illuminate/config": "^5.7",
         "illuminate/support": "^5.7",
+        "illuminate/view": "^5.7",
         "ext-json": "*",
         "php": "^7.2.0"
     },
