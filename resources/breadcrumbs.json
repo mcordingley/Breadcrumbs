@@ -1,0 +1,17 @@
+{
+    "/": {
+        "title": "Home"
+    },
+    "/foo": {
+        "parent": "/",
+        "title": "Foo"
+    },
+    "/foo/create": {
+        "parent": "/foo",
+        "title": "Create"
+    },
+    "/foo/{foo.id}/edit": {
+        "parent": "/foo",
+        "title": "Edit {foo.name}"
+    }
+}
