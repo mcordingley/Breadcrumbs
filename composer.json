@@ -1,0 +1,31 @@
+{
+    "name": "mcordingley/breadcrumbs",
+    "description": "Laravel Helper Package for DRY Breadcrumbs",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "MCordingley\\Breadcrumbs\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MCordingley\\BreadcrumbTests\\": "tests/"
+        }
+    },
+    "require": {
+        "illuminate/support": "^5.7",
+        "ext-json": "*",
+        "php": "^7.2.0"
+    },
+    "require-dev": {
+        "ext-xml": "*",
+        "phpunit/phpunit": "^8.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Cordingley",
+            "email": "Michael.Cordingley@gmail.com"
+        }
+    ]
+}
