@@ -1,0 +1,17 @@
+{
+    "/test": {
+        "title": "Base Test"
+    },
+    "/test/sub": {
+        "parent": "/test",
+        "title": "Sub"
+    },
+    "/test/sub/create": {
+        "parent": "/test/sub",
+        "title": "Create"
+    },
+    "/test/sub/{foo.id}/edit": {
+        "parent": "/test/sub",
+        "title": "Edit {foo.name}"
+    }
+}
