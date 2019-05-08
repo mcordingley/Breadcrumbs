@@ -29,5 +29,15 @@
             "name": "Michael Cordingley",
             "email": "Michael.Cordingley@gmail.com"
         }
-    ]
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MCordingley\\Breadcrumbs\\ServiceProvider"
+            ],
+            "aliases": {
+                "Breadcrumbs": "MCordingley\\Breadcrumbs\\Breadcrumb"
+            }
+        }
+    }
 }
