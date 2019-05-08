@@ -3,7 +3,7 @@
 namespace MCordingley\BreadcrumbTests\Loaders;
 
 use Illuminate\Support\Arr;
-use MCordingley\Breadcrumbs\Breadcrumb;
+use MCordingley\Breadcrumbs\Crumb;
 use MCordingley\Breadcrumbs\Loader;
 use MCordingley\Breadcrumbs\Loaders\Base;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -46,7 +46,7 @@ final class BaseTest extends TestCase
             'foo' => $data,
         ]);
 
-        /** @var Breadcrumb $tail */
+        /** @var Crumb $tail */
         $tail = Arr::last($trail);
 
         static::assertEquals('Edit Test', $tail->title());
