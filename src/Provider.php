@@ -19,7 +19,7 @@ final class Provider extends ServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../config/breadcrumbs.php' => config_path('breadcrumbs.php'),
-            __DIR__ . '/../resources/breadcrumbs.json' => resources_path('breadcrumbs.json'),
+            __DIR__ . '/../resources/breadcrumbs.json' => resource_path('breadcrumbs.json'),
         ]);
 
         $this->app->singleton(Loader::class, function (Container $app) {
