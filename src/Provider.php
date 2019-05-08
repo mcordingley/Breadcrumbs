@@ -24,13 +24,6 @@ final class Provider extends ServiceProvider
 
         $this->app->singleton('breadcrumbs', Factory::class);
 
-        $this->app->singleton(Factory::class, function (Container $app) {
-            return new Factory(
-                $app->make(Loader::class),
-                $app->make(Formatter::class)
-            );
-        });
-
         $this->app->singleton(Loader::class, function (Container $app) {
             return $this->buildLoader($app);
         });
