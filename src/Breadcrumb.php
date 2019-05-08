@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Facade;
  */
 final class Breadcrumb extends Facade
 {
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
-        return 'breadcrumbs';
+        return Factory::class;
     }
 }

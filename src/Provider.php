@@ -22,8 +22,6 @@ final class Provider extends ServiceProvider
             __DIR__ . '/../resources/breadcrumbs.json' => resources_path('breadcrumbs.json'),
         ]);
 
-        $this->app->singleton('breadcrumbs', Factory::class);
-
         $this->app->singleton(Loader::class, function (Container $app) {
             return $this->buildLoader($app);
         });
