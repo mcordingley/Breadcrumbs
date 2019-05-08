@@ -17,7 +17,7 @@ final class View implements Formatter
     public function format(Trail $trail): string
     {
         /** @var \Illuminate\Contracts\View\View $view */
-        $view = view($this->view, ['trail' => $this]);
+        $view = view($this->view, ['trail' => $trail]);
 
         return $view->render();
     }
