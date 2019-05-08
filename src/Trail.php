@@ -4,22 +4,24 @@ namespace MCordingley\Breadcrumbs;
 
 use ArrayIterator;
 use Countable;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Arr;
 use IteratorAggregate;
 
 final class Trail implements Countable,
-    IteratorAggregate
+    IteratorAggregate,
+    Renderable
 {
     private $crumbs = [];
+    private $formatter;
 
-    /**
-     * @param Breadcrumb[] $crumbs
-     */
-    public function __construct(array $crumbs)
+    public function __construct(array $crumbs, Formatter $formatter)
     {
         foreach ($crumbs as $crumb) {
             $this->addCrumb($crumb);
         }
+
+        $this->formatter = $formatter;
     }
 
     private function addCrumb(Breadcrumb $crumb): void
@@ -40,5 +42,10 @@ final class Trail implements Countable,
     public function getIterator()
     {
         return new ArrayIterator($this->crumbs);
+    }
+
+    public function render(): string
+    {
+        return $this->formatter->format($this);
     }
 }
