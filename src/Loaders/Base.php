@@ -2,7 +2,7 @@
 
 namespace MCordingley\Breadcrumbs\Loaders;
 
-use MCordingley\Breadcrumbs\Breadcrumb;
+use MCordingley\Breadcrumbs\Crumb;
 use MCordingley\Breadcrumbs\Loader;
 
 abstract class Base implements Loader
@@ -16,7 +16,7 @@ abstract class Base implements Loader
         do {
             $crumb = $this->loadCrumb($path);
 
-            $trail[] = new Breadcrumb(
+            $trail[] = new Crumb(
                 $this->resolveProperties($path, $properties),
                 $this->resolveProperties($crumb['title'], $properties)
             );

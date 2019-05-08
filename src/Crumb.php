@@ -2,7 +2,7 @@
 
 namespace MCordingley\Breadcrumbs;
 
-final class Breadcrumb
+final class Crumb
 {
     private $title;
     private $url;

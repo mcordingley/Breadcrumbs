@@ -24,12 +24,12 @@ final class Trail implements Countable,
         $this->formatter = $formatter;
     }
 
-    private function addCrumb(Breadcrumb $crumb): void
+    private function addCrumb(Crumb $crumb): void
     {
         $this->crumbs[] = $crumb;
     }
 
-    public function tail(): ?Breadcrumb
+    public function tail(): ?Crumb
     {
         return Arr::last($this->crumbs);
     }

@@ -7,7 +7,7 @@ interface Loader
     /**
      * @param string $path
      * @param array $properties
-     * @return Breadcrumb[]
+     * @return Crumb[]
      */
     public function load(string $path, array $properties = []): array;
 }
