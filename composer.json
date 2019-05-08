@@ -21,7 +21,8 @@
     },
     "require-dev": {
         "ext-xml": "*",
-        "phpunit/phpunit": "^8.1"
+        "phpunit/phpunit": "^8.1",
+        "mockery/mockery": "^1.2"
     },
     "license": "MIT",
     "authors": [
