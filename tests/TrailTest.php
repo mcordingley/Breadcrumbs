@@ -25,7 +25,7 @@ final class TrailTest extends TestCase
             ->with($trail)
             ->willReturn('formatted');
 
-        static::assertEquals('formatted', $trail->render());
+        static::assertEquals('formatted', $trail->__toString());
         static::assertEquals('c', $trail->tail()->url());
         static::assertEquals(2, count($trail));
 
