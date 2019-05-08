@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'loader' => env('BREADCRUMB_LOADER', 'json'),
+    'loader' => env('BREADCRUMBS_LOADER', 'json'),
 
     /*
     |--------------------------------------------------------------------------
@@ -31,20 +31,40 @@ return [
             //'via' => \App\CreateBreadcrumbLoader::class,
         ],
         'json' => [
-            'path' => env('BREADCRUMB_JSON_PATH', resource_path('breadcrumbs.json')),
+            'path' => env('BREADCRUMBS_JSON_PATH', resource_path('breadcrumbs.json')),
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | View Partial
+    | Formatter
     |--------------------------------------------------------------------------
     |
-    | Set your breadcrumb view partial here. We default to a Bootstrap
+    | The formatter converts your breadcrumbs into some rendered output. By
+    | default, this will simply be a Blade view. But, "custom" will allow
+    | a custom factory class to provide an instance of `Formatter`.
+    |
+    */
+
+    'formatter' => env('BREADCRUMBS_FORMATTER', 'view'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Formatters
+    |--------------------------------------------------------------------------
+    |
+    | Set loader-specific options here. "json" will read a local JSON file, while
     | "custom" points to a factory class that returns a loader from its `__invoke`
     | method.
     |
     */
 
-    'view' => env('BREADCRUMB_VIEW', 'breadcrumbs::bootstrap'),
+    'formatters' => [
+        'custom' => [
+            //'via' => \App\CreateBreadcrumbFormatter::class,
+        ],
+        'view' => [
+            'path' => env('BREADCRUMBS_VIEW', 'breadcrumbs::bootstrap'),
+        ],
+    ],
 ];
