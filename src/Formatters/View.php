@@ -2,22 +2,22 @@
 
 namespace MCordingley\Breadcrumbs\Formatters;
 
+use Illuminate\Support\Facades\View as IlluminateView;
 use MCordingley\Breadcrumbs\Formatter;
 use MCordingley\Breadcrumbs\Trail;
 
 final class View implements Formatter
 {
-    private $view;
+    private $path;
 
-    public function __construct(string $view)
+    public function __construct(string $path)
     {
-        $this->view = $view;
+        $this->path = $path;
     }
 
     public function format(Trail $trail): string
     {
-        /** @var \Illuminate\Contracts\View\View $view */
-        $view = view($this->view, ['trail' => $trail]);
+        $view = IlluminateView::make($this->path, ['trail' => $trail]);
 
         return $view->render();
     }
