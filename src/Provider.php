@@ -32,26 +32,24 @@ final class Provider extends ServiceProvider
         });
 
         $this->app->singleton(Loader::class, function (Container $app) {
-            switch (config('breadcrumbs.loader')) {
-                case 'custom':
-                    return $this->buildCustomLoader($app);
-                case 'json':
-                    return new JsonLoader(config('breadcrumbs.loaders.json.path'));
-                default:
-                    throw new Exception('Invalid loader.');
-            }
+            return $this->buildLoader($app);
         });
 
         $this->app->singleton(Formatter::class, function (Container $app) {
-            switch (config('breadcrumbs.formatter')) {
-                case 'custom':
-                    return $this->buildCustomFormatter($app);
-                case 'view':
-                    return new View(config('breadcrumbs.formatters.view.path'));
-                default:
-                    throw new Exception('Invalid formatter.');
-            }
+            return $this->buildFormatter($app);
         });
+    }
+
+    private function buildLoader(Container $app): Loader
+    {
+        switch (config('breadcrumbs.loader')) {
+            case 'custom':
+                return $this->buildCustomLoader($app);
+            case 'json':
+                return new JsonLoader(config('breadcrumbs.loaders.json.path'));
+            default:
+                throw new Exception('Invalid loader.');
+        }
     }
 
     private function buildCustomLoader(Container $app): Loader
@@ -61,7 +59,19 @@ final class Provider extends ServiceProvider
         return $factory();
     }
 
-    private function buildCustomFormatter(Container $app): Loader
+    private function buildFormatter(Container $app): Formatter
+    {
+        switch (config('breadcrumbs.formatter')) {
+            case 'custom':
+                return $this->buildCustomFormatter($app);
+            case 'view':
+                return new View(config('breadcrumbs.formatters.view.path'));
+            default:
+                throw new Exception('Invalid formatter.');
+        }
+    }
+
+    private function buildCustomFormatter(Container $app): Formatter
     {
         $factory = $app->make(config('breadcrumbs.formatters.custom.via'));
 
